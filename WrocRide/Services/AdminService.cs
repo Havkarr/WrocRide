@@ -18,10 +18,12 @@ namespace WrocRide.Services
     {
         private readonly WrocRideDbContext _dbContext;
         private readonly IUserContextService _userContextService;
-        public AdminService(WrocRideDbContext dbContext, IUserContextService userContextService)
+        private readonly IDriverService _driverService;
+        public AdminService(WrocRideDbContext dbContext, IUserContextService userContextService, IDriverService driverService)
         {
             _dbContext = dbContext;
             _userContextService = userContextService;
+            _driverService = driverService;
         }
 
         public PagedList<DocumentDto> GetDocuments(DocumentQuery query)
@@ -59,6 +61,23 @@ namespace WrocRide.Services
             document.DocumentStatus = dto.DocumentStatus;
             document.ExaminationDate = DateTime.UtcNow;
             document.AdminId = adminId;
+
+            if (dto.DocumentStatus == Models.Enums.DocumentStatus.Accepted)
+            {
+                var status = new UpdateDriverStatusDto
+                {
+                    DriverStatus = Models.Enums.DriverStatus.Offline
+                };
+                var driver = _dbContext.Drivers.FirstOrDefault(d => d.DocumentId == id);
+
+                if (driver == null)
+                {
+                    throw new NotFoundException("Driver not found");
+                }
+
+                var driverId = driver.Id;
+                _driverService.UpdateStatus(driverId, status);
+            }
 
             _dbContext.SaveChanges();
         }
