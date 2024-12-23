@@ -25,5 +25,20 @@ namespace WrocRide.Controllers
             return Ok(result);
         }
 
+        [HttpPut("documents/{id}")]
+        public ActionResult UpdateDocument([FromRoute] int id, [FromBody] UpdateDocumentDto dto)
+        {
+            _adminService.UpdateDocument(id, dto);
+
+            return NoContent();
+        }
+
+        [HttpGet("documents/{driverId}")]
+        public ActionResult<DocumentDto> GetDocumentByDriverId([FromRoute] int driverId)
+        {
+            var result = _adminService.GetByDriverId(driverId);
+
+            return Ok(result);
+        }
     }
 }

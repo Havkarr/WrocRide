@@ -38,11 +38,7 @@ namespace WrocRide.Controllers
         }
 
         [HttpGet("{id}")]
-<<<<<<< HEAD
         public ActionResult<RideDeatailsDto> GetRideById([FromRoute] int id)
-=======
-        public ActionResult GetRideById([FromRoute] int id)
->>>>>>> a93b2aa8f314e8c61b44c5323103c01c713f105e
         {
             var result = _rideService.GetById(id);
 
@@ -65,13 +61,9 @@ namespace WrocRide.Controllers
             return Ok();
         }
 
-<<<<<<< HEAD
+
         [HttpPut("{id}/cancel-ride")]
         public ActionResult CancelRide([FromRoute] int id)
-=======
-        [HttpPut("decision")]
-        public ActionResult DriverDecision()
->>>>>>> a93b2aa8f314e8c61b44c5323103c01c713f105e
         {
             _rideService.CancelRide(id);
 

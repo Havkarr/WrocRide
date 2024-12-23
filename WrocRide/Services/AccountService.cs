@@ -120,6 +120,7 @@ namespace WrocRide.Services
                 };
 
                 _dbContext.Documents.Add(document);
+                _dbContext.SaveChanges();
 
                 var car = new Car()
                 {
