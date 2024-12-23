@@ -24,14 +24,14 @@ namespace WrocRide.Services
 
         public UserDto GetUser()
         {
-            var userId = _userContextService.GetUserId;
+            int? userId = _userContextService.GetUserId;
+
+            if (userId == null)
+            {
+                throw new NotFoundException("User not found"); 
+            }
 
             var user = _dbContext.Users.FirstOrDefault(u => u.Id == userId);
-
-            if(user == null)
-            {
-                throw new NotFoundException("User not found");
-            }
 
             var result =  new UserDto()
             {
@@ -47,14 +47,14 @@ namespace WrocRide.Services
 
         public void UpdateUser(UpdateUserDto dto)
         {
-            var userId = _userContextService.GetUserId;
+            int? userId = _userContextService.GetUserId;
+
+            if (userId == null)
+            {
+                throw new NotFoundException("User not found"); 
+            }
 
             var user = _dbContext.Users.FirstOrDefault(u => u.Id == userId);
-
-            if(user == null)
-            {
-                throw new NotFoundException("User not found");
-            }
 
             if (!string.IsNullOrEmpty(dto.Name))
             {
@@ -83,6 +83,8 @@ namespace WrocRide.Services
             }
 
             _dbContext.SaveChanges();
+
+            return;
         }
     }
 }

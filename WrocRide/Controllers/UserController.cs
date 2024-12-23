@@ -26,12 +26,20 @@ namespace WrocRide.Controllers
             return Ok(result);
         }
 
+<<<<<<< HEAD
         [HttpPut]
+=======
+        [HttpPost]
+>>>>>>> a93b2aa8f314e8c61b44c5323103c01c713f105e
         public ActionResult UpdateProfile([FromBody] UpdateUserDto dto)
         {
             _userService.UpdateUser(dto);
 
+<<<<<<< HEAD
             return Ok();
+=======
+            return NoContent();
+>>>>>>> a93b2aa8f314e8c61b44c5323103c01c713f105e
         }
     }
 }

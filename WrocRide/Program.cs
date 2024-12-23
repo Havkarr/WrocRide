@@ -31,6 +31,7 @@ builder.Services.AddScoped<IValidator<UpdateCarDto>, UpdateCarDtoValidator>();
 builder.Services.AddScoped<IValidator<DriverQuery>, DriverQueryValidator>();
 builder.Services.AddScoped<IValidator<UpdateDriverPricingDto>, UpdateDriverPricingDtoValidator>();
 builder.Services.AddScoped<IValidator<UpdateDriverStatusDto>, UpdateDriverStatusDtoValidator>();
+<<<<<<< HEAD
 builder.Services.AddScoped<IValidator<UpdateRideStatusDto>, UpdateRideStatusDtoValidator>();
 builder.Services.AddScoped<IValidator<RideDriverDecisionDto>, RideDriverDecisionDtoValidator>();
 builder.Services.AddScoped<IValidator<RideQuery>, RideQueryValidator>();
@@ -38,6 +39,9 @@ builder.Services.AddScoped<IValidator<UpdateUserDto>, UpdateUserDtoValidator>();
 builder.Services.AddScoped<IValidator<CreateRatingDto>, CreateRatingDtoValidator>();
 builder.Services.AddScoped<IValidator<DriverRatingsQuery>, DriverRatingsQueryValidator>();
 builder.Services.AddScoped<IValidator<DocumentQuery>, DocumentQueryValidator>();
+=======
+builder.Services.AddScoped<IValidator<UpdateUserDto>, UpdateUserDtoValidator>();
+>>>>>>> a93b2aa8f314e8c61b44c5323103c01c713f105e
 
 builder.Services.AddScoped<IDriverService, DriverService>();
 builder.Services.AddScoped<IAccountService, AccountService>();
@@ -45,8 +49,11 @@ builder.Services.AddScoped<ICarService, CarService>();
 builder.Services.AddScoped<IRideService, RideService>();
 builder.Services.AddScoped<IUserContextService, UserContextService>();
 builder.Services.AddScoped<IUserService, UserService>();
+<<<<<<< HEAD
 builder.Services.AddScoped<IRatingService, RatingService>();
 builder.Services.AddScoped<IAdminService, AdminService>();
+=======
+>>>>>>> a93b2aa8f314e8c61b44c5323103c01c713f105e
 
 builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
 builder.Services.AddScoped<ErrorHandlingMiddleware>();
